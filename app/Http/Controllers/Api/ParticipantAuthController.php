@@ -83,4 +83,19 @@ class ParticipantAuthController extends Controller
             'expires_in' => auth('api')->factory()->getTTL() * 60,
         ]);
     }
+
+    public function checkSession(Request $request)
+{
+    try {
+        $user = auth('api')->user(); // Ou o guard personalizado
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthenticated'], 401);
+        }
+
+        return response()->json(['message' => 'Authenticated'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Erro'], 500);
+    }
+}
 }

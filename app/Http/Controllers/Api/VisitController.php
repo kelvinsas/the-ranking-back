@@ -45,9 +45,11 @@ class VisitController extends Controller
                 ]);
 
                 $participant->increment('points', 1); // visita de indicado
+
+                $participant->save();
         }
 
-        return response()->json(['message' => 'Visita registrada.']);
+        return response()->json(['message' => 'Visita registrada.', 'user' => $participant]);
     }
 
     public function share(Request $request)

@@ -31,6 +31,8 @@ Route::prefix('participant')->group(function () {
         Route::get('/me', [ParticipantAuthController::class, 'me']);
         Route::post('/logout', [ParticipantAuthController::class, 'logout']);
         Route::post('/refresh', [ParticipantAuthController::class, 'refresh']);
+        Route::get('/session', [ParticipantAuthController::class, 'checkSession']);
+
     });
 });
 
